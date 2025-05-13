@@ -48,7 +48,7 @@
         </nav>
     </header>
     <main class="container my-3">
-        <h1 class="display-6">Produtos em Destaque</h1>
+        <h1 class="display-6">{{titulo_pagina|safe if titulo_pagina else "Titulo indefinido"}}</h1>
         <hr>
         {%block conteudo%}
         {%endblock%}
