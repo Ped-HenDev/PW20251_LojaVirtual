@@ -3,10 +3,11 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from babel.numbers import format_currency
 
-from repo.cliente_repo import obter_clientes_por_pagina
-from repo.produto_repo import criar_tabela, obter_produto_por_id, obter_produtos_por_pagina
+from repo.cliente_repo import criar_tabela_clientes, obter_clientes_por_pagina
+from repo.produto_repo import criar_tabela_produtos, obter_produto_por_id, obter_produtos_por_pagina
 
-criar_tabela()
+criar_tabela_produtos()
+criar_tabela_clientes()
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -32,6 +33,12 @@ def read_produto(request: Request, id: int):
 def read_clientes(request: Request):
     clientes = obter_clientes_por_pagina(12, 0)
     response = templates.TemplateResponse("clientes.html", {"request": request, "clientes": clientes})
+    return response
+
+@app.get("/produtos")
+def read_produto(request: Request):
+    produtos = obter_produtos_por_pagina(12, 0)
+    response = templates.TemplateResponse("produtos.html", {"request": request, "produtos": produtos})
     return response
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
     cpf TEXT NOT NULL UNIQUE,
     telefone TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
-    data_nascimento DATE NOT NULL);
+    data_nascimento TEXT NOT NULL);
 """
 
 INSERT_CLIENTE = """
