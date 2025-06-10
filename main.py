@@ -79,7 +79,7 @@ async def login(
         "nome" : usuario.nome,
         "email" : usuario.email
     }
-    request.session["usuario"] = usuario
+    request.session["usuario"] = usuario_json
     return RedirectResponse(url="/", status_code=303)
 
 @app.get("/logout")
